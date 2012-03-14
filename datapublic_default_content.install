@@ -6,7 +6,7 @@
  * we are removing the default theme as we set that in code
  * we also enable the datapublic_theme so it can become default
  */
-function datapublic_defaults_install() {
+function datapublic_default_content_install() {
   // we are setting this variables as the appear to get pulled
   // before strongarm can set them
   variable_set("theme_default", "datapublic_theme");
@@ -70,5 +70,4 @@ function datapublic_defaults_install() {
   ->condition('delta', '3')
   ->fields(array('title' => '<none>'))
   ->execute();
-
 }
