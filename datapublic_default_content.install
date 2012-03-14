@@ -57,12 +57,47 @@ function datapublic_default_content_install() {
       drupal_write_record('follow_links', $data);
     }
   }
-
+  
+  // Twitter module updates...
   if(module_exists('twitter')){
-    $twitter = new Twitter('SenateCA');
-    $account = $twitter->users_show($name, false);
-    twitter_account_save($account, TRUE, 1);
-  }
+    $twitter_data[] = array(
+      'twitter_uid' => 380489682,
+      'uid' => 1,
+      'host' => NULL,
+      'screen_name' => 'SenateCA',
+  	  'password' => NULL,
+      'oauth_token' => NULL,
+      'oauth_token_secret' => NULL,
+      'name' => 'Senate of Canada',
+      'description' => 'News and information from CanadaÕs Upper Chamber. This news feed is produced by the Senate Communications team. En franais: @senatCA',
+    	'location' => 'Ottawa, Canada',
+      'followers_count' => 1371,
+      'friends_count' => 1255,
+      'statuses_count' => 515,
+      'favourites_count' => 0,
+      'url' => 'http://sen.parl.gc.ca',
+      'profile_image_url' => 'http://a0.twimg.com/profile_images/1588307122/Twitter_ProfilPic3_normal.jpg',
+      'protected' => 0,
+      'profile_background_color' => '333332',
+      'profile_text_color' => '474447',
+      'profile_link_color' => '82041f',
+      'profile_sidebar_fill_color' => 'ffffff',
+      'profile_sidebar_border_color' => '000000',
+      'profile_background_image_url' => 'http://a0.twimg.com/profile_background_images/408153199/Twitter-BG-1_jan_24_2012.jpg',
+      'profile_background_tile' => 0,
+      'verified' => 0,
+      'created_at' => 'Mon Sep 26 18:49:42 +0000 2011',
+      'created_time' => 1317062982,
+      'utc_offset' => -18000,
+      'import' => 1,
+      'last_refresh' => 1331747238,
+      'is_global' => 0,
+    );
+    	
+    foreach ($twitter_data as $data) {
+      drupal_write_record('twitter_account', $data);
+    }
+  }																												  
 
   // Update the superfish block title so that it doesn't show up
   db_update('block')
