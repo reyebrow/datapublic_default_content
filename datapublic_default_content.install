@@ -62,5 +62,13 @@ function datapublic_defaults_install() {
     $twitter = new Twitter('SenateCA');
     $account = $twitter->users_show($name, false);
     twitter_account_save($account, TRUE, 1);
-  }    
+  }
+
+  // Update the superfish block title so that it doesn't show up
+  db_update('block')
+  ->condition('module', 'superfish')
+  ->condition('delta', '3')
+  ->fields(array('title' => '<none>'))
+  ->execute();
+
 }
