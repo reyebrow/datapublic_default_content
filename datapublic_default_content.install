@@ -69,7 +69,7 @@ function datapublic_default_content_install() {
       'oauth_token' => NULL,
       'oauth_token_secret' => NULL,
       'name' => 'Senate of Canada',
-      'description' => 'News and information from CanadaÕs Upper Chamber. This news feed is produced by the Senate Communications team. En franais: @senatCA',
+      'description' => "News and information from Canadas Upper Chamber. This news feed is produced by the Senate Communications team.",
     	'location' => 'Ottawa, Canada',
       'followers_count' => 1371,
       'friends_count' => 1255,
@@ -98,11 +98,4 @@ function datapublic_default_content_install() {
       drupal_write_record('twitter_account', $data);
     }
   }																												  
-
-  // Update the superfish block title so that it doesn't show up
-  db_update('block')
-  ->condition('module', 'superfish')
-  ->condition('delta', '3')
-  ->fields(array('title' => '<none>'))
-  ->execute();
 }
